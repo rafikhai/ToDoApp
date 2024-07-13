@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import { View, TextInput, Button, StyleSheet } from 'react-native';
 
-const AddNoteScreen = ({ route, navigation }) => {
-  const { setNotes } = route.params;
+const AddTaskScreen = ({ route, navigation }) => {
+  const { setTasks } = route.params;
   const [text, setText] = useState('');
 
-  const addNote = () => {
-    setNotes(prevNotes => [
-      ...prevNotes,
+  const addTask = () => {
+    setTasks(prevTasks => [
+      ...prevTasks,
       { id: Date.now().toString(), text }
     ]);
     navigation.goBack();
@@ -17,11 +17,11 @@ const AddNoteScreen = ({ route, navigation }) => {
     <View style={styles.container}>
       <TextInput
         style={styles.input}
-        placeholder="Enter note"
+        placeholder="Enter task"
         value={text}
         onChangeText={setText}
       />
-      <Button title="Add Note" onPress={addNote} />
+      <Button title="Add Task" onPress={addTask} />
     </View>
   );
 };
@@ -40,4 +40,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default AddNoteScreen;
+export default AddTaskScreen;
